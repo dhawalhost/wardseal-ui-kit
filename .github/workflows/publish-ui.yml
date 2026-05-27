@@ -1,0 +1,88 @@
+name: Publish @dhawalhost/wardseal-ui-kit
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Triggers on any tag matching "ui/v*" — for example:
+#   git tag ui/v0.1.0 && git push --tags
+#   git tag ui/v1.0.0 && git push --tags
+# ─────────────────────────────────────────────────────────────────────────────
+on:
+  push:
+    tags:
+      - "ui/v*"
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    name: Build & Publish to GitHub Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Node + registry auth ───────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@dhawalhost"
+
+      # ── 3. Install dependencies ────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Build the library ───────────────────────────────────────────
+      - name: Build @dhawalhost/wardseal-ui-kit
+        run: npm run build
+
+      # ── 5. Verify the dist output is complete ──────────────────────────
+      - name: Verify build artifacts
+        run: |
+          echo "=== dist/ contents ==="
+          ls -lh dist/
+          echo ""
+          echo "✓ Checking required files exist..."
+          test -f dist/index.js   && echo "✓ dist/index.js (ESM)"
+          test -f dist/index.cjs  && echo "✓ dist/index.cjs (CJS)"
+          test -f dist/index.d.ts && echo "✓ dist/index.d.ts (Types)"
+          test -f dist/styles.css && echo "✓ dist/styles.css (Styles)"
+
+      # ── 6. Extract the version from the tag ──────────────────────────────
+      - name: Extract version from tag
+        id: version
+        run: |
+          # Convert "ui/v0.2.0" → "0.2.0"
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#ui/v}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Publishing version: ${VERSION}"
+
+      # ── 7. Ensure package.json version matches the tag ───────────────────
+      - name: Sync package.json version with tag
+        run: |
+          npm version "${{ steps.version.outputs.version }}" --no-git-tag-version --allow-same-version
+          echo "package.json version set to: $(node -p "require('./package.json').version")"
+
+      # ── 8. Publish to GitHub Packages ────────────────────────────────────
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 9. Post publish summary ───────────────────────────────────────────
+      - name: Publish summary
+        run: |
+          echo "## ✅ @dhawalhost/wardseal-ui-kit published!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** \`${{ steps.version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Registry:** GitHub Packages" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Install with:" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "npm install @dhawalhost/wardseal-ui-kit@${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
