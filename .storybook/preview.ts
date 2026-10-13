@@ -6,12 +6,12 @@ const preview: Preview = {
     theme: {
       name: "Theme",
       description: "Global theme for all stories",
-      defaultValue: "dark",
+      defaultValue: "light",
       toolbar: {
         icon: "mirror",
         items: [
-          { value: "dark", title: "Dark" },
           { value: "light", title: "Light" },
+          { value: "dark", title: "Dark" },
         ],
         dynamicTitle: true,
       },
@@ -25,20 +25,19 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      // Disable Storybook's built-in background switcher — our ThemeProvider
-      // controls the canvas background via CSS variables on the wrapper div.
       disable: true,
     },
   },
   decorators: [
     (Story, context) => {
-      const selectedTheme = context.globals.theme === "light" ? "light" : "dark";
+      const selectedTheme = context.globals.theme === "dark" ? "dark" : "light";
 
-      // Keep Storybook iframe root synced with the toolbar-selected theme.
       if (typeof document !== "undefined") {
         document.documentElement.classList.remove("light", "dark");
         document.documentElement.classList.add(selectedTheme);
-        document.body.style.background = `hsl(var(--background))`;
+        document.body.style.background = "hsl(var(--background))";
+        document.body.style.color = "hsl(var(--foreground))";
+        document.body.style.fontFamily = "var(--font-display)";
       }
 
       return Story();

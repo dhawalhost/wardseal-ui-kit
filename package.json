@@ -1,7 +1,7 @@
 {
   "name": "@dhawalhost/wardseal-ui-kit",
-  "version": "0.1.0",
-  "description": "WardSeal Brand UI Component Library — React + Tailwind, dual-theme, Radix primitives.",
+  "version": "0.2.0",
+  "description": "WardSeal Brand UI Component Library — React + Tailwind. Source of truth for the WardSeal design system across all apps.",
   "keywords": [
     "wardseal",
     "ui",
@@ -18,7 +18,9 @@
   "homepage": "https://github.com/dhawalhost/wardseal-ui-kit",
   "type": "module",
   "sideEffects": [
-    "./dist/styles.css"
+    "./dist/styles.css",
+    "./src/styles/global.css",
+    "./src/styles/tokens.css"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -29,19 +31,34 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles.css": "./dist/styles.css",
+    "./styles.css": {
+      "default": "./src/styles/global.css"
+    },
+    "./tokens.css": {
+      "default": "./src/styles/tokens.css"
+    },
+    "./tailwind-preset": {
+      "types": "./src/tailwind-preset.ts",
+      "default": "./src/tailwind-preset.ts"
+    },
     "./package.json": "./package.json"
   },
   "files": [
     "dist",
-    "README.md"
+    "src/styles",
+    "src/tailwind-preset.ts",
+    "README.md",
+    "LAYOUT.md",
+    "THEMES.md",
+    "MAINTENANCE.md"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc -p tsconfig.build.json",
+    "build": "vite build && tsc -p tsconfig.build.json && cp src/styles/tokens.css dist/tokens.css && cp src/styles/global.css dist/global.css",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "sync:web-ui": "rsync -a --delete --exclude '*.stories.tsx' --exclude '.DS_Store' src/ ../wardseal/web/ui/src/ && cp src/styles/tokens.css ../wardseal/web/ui/src/styles/ && cp src/styles/global.css ../wardseal/web/ui/src/styles/ && cp src/tailwind-preset.ts ../wardseal/web/ui/src/"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

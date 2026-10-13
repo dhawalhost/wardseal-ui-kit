@@ -47,10 +47,11 @@ jobs:
           ls -lh dist/
           echo ""
           echo "✓ Checking required files exist..."
-          test -f dist/index.js   && echo "✓ dist/index.js (ESM)"
-          test -f dist/index.cjs  && echo "✓ dist/index.cjs (CJS)"
-          test -f dist/index.d.ts && echo "✓ dist/index.d.ts (Types)"
-          test -f dist/styles.css && echo "✓ dist/styles.css (Styles)"
+          test -f dist/index.js    && echo "✓ dist/index.js (ESM)"
+          test -f dist/index.cjs   && echo "✓ dist/index.cjs (CJS)"
+          test -f dist/index.d.ts  && echo "✓ dist/index.d.ts (Types)"
+          test -f dist/tokens.css  && echo "✓ dist/tokens.css (Tokens)"
+          test -f dist/global.css  && echo "✓ dist/global.css (Global styles)"
 
       # ── 6. Extract the version from the tag ──────────────────────────────
       - name: Extract version from tag
