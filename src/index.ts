@@ -39,6 +39,16 @@ export {
   CardFooter,
 } from "./components/Card/Card";
 
+/** App-facing aliases — same primitives as Card (product UIs used Glass* names). */
+export {
+  Card as GlassCard,
+  CardHeader as GlassCardHeader,
+  CardTitle as GlassCardTitle,
+  CardDescription as GlassCardDescription,
+  CardContent as GlassCardContent,
+  CardFooter as GlassCardFooter,
+} from "./components/Card/Card";
+
 // Dropdown
 export {
   DropdownMenu,

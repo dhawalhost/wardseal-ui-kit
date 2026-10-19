@@ -10,7 +10,8 @@ This document is the **operating manual** for the WardSeal brand UI system. Foll
 |----------|------|------------|
 | **`wardseal-ui-kit`** (this repo) | **Source of truth** — tokens, Tailwind preset, components, layouts, Storybook | **Yes — always start here** |
 | **`wardseal/web/ui`** | Workspace **mirror** so monorepo apps resolve `@dhawalhost/wardseal-ui-kit` via symlink | **No** (overwrite from kit) |
-| **`wardseal/web/admin`** (and `app`, `id`, …) | Product apps — pages, routes, API wiring | App logic only; import kit for UI |
+| **`wardseal/web/admin`** (and `app`, `id`, …) | Product apps — pages, routes, API wiring | App logic only; import kit for UI (`PageLayout`, `StatCard`, `GlassCard` aliases) |
+| **`wardseal/web/landing`** | Marketing SPA | Import `tokens.css`; keep CSS class names; aliases in `base.css` (`--accent` = CTA → `--secondary`) |
 | **`wardseal/design-system/wardseal/MASTER.md`** | Brand intent (palette, type, spacing philosophy) | When brand strategy changes; then update kit tokens to match |
 
 ```
@@ -197,6 +198,8 @@ Keep **ui-kit** and **web/ui** versions identical after every sync.
 | Emerald / neon hex in components | Brand tokens only |
 | Pad `AdminShell` main | Use `PageLayout` |
 | Two packages named `@dhawalhost/wardseal-ui-kit` with different themes | One SoT (this repo) + mirror |
+| Parallel hex palette in `web/landing` | Import `tokens.css`; alias only in `base.css` |
+| Local GlassCard / StatCard / theme.ts forks in apps | Re-export or import from this kit |
 
 ---
 
@@ -210,5 +213,6 @@ Page structure               →  src/layouts/...  (+ LAYOUT.md)
 Theme toggle default         →  ThemeProvider + .storybook/preview.ts
 Brand strategy (hex intent)  →  wardseal/design-system/wardseal/MASTER.md
 App pages / API              →  wardseal/web/<app>/src/...
+Landing marketing CSS        →  tokens.css + landing base.css aliases
 After kit edits              →  rsync → web/ui  →  bump versions  →  refresh apps
 ```

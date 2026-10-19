@@ -1,6 +1,6 @@
 {
   "name": "@dhawalhost/wardseal-ui-kit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "WardSeal Brand UI Component Library — React + Tailwind. Source of truth for the WardSeal design system across all apps.",
   "keywords": [
     "wardseal",
