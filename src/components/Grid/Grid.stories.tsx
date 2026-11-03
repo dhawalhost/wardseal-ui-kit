@@ -30,7 +30,7 @@ export const BasicColumns: Story = {
         <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">
           Equal 4-Column Grid
         </h3>
-        <p className="text-xs text-on-surface-variant/60 mb-4">
+        <p className="text-xs text-on-surface-subtle mb-4">
           A static 4-column layout that is uniform across all screen widths.
         </p>
         <Grid cols={4} gap={4}>
@@ -45,7 +45,7 @@ export const BasicColumns: Story = {
         <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">
           Responsive Layout Wrapper (1 to 2 to 4 cols)
         </h3>
-        <p className="text-xs text-on-surface-variant/60 mb-4">
+        <p className="text-xs text-on-surface-subtle mb-4">
           Wraps to 1 column on mobile, 2 columns on tablet, and 4 columns on desktop/xl screens.
         </p>
         <Grid cols={{ base: 1, sm: 2, md: 2, lg: 4 }} gap="card">
@@ -66,7 +66,7 @@ export const SpansAndOffsets: Story = {
         <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">
           Column Spanning Layout (12-column base)
         </h3>
-        <p className="text-xs text-on-surface-variant/60 mb-4">
+        <p className="text-xs text-on-surface-subtle mb-4">
           Combine different span widths to build sidebar, primary contents, and sidebar layouts.
         </p>
         <Grid cols={12} gap={4}>
@@ -92,7 +92,7 @@ export const SpansAndOffsets: Story = {
         <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">
           Grid Item Offsets
         </h3>
-        <p className="text-xs text-on-surface-variant/60 mb-4">
+        <p className="text-xs text-on-surface-subtle mb-4">
           Use the `offset` prop to push items horizontally.
         </p>
         <Grid cols={3} gap={4}>
@@ -117,7 +117,7 @@ export const BrandSpacingGaps: Story = {
         <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">
           Dashboard Page Spacing (`gap="page"`)
         </h3>
-        <p className="text-xs text-on-surface-variant/60 mb-4">
+        <p className="text-xs text-on-surface-subtle mb-4">
           Uses WardSeal's global page space token (`var(--space-page)` / 40px) for layouts.
         </p>
         <Grid cols={3} gap="page">
@@ -131,7 +131,7 @@ export const BrandSpacingGaps: Story = {
         <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">
           Section Spacing (`gap="section"`)
         </h3>
-        <p className="text-xs text-on-surface-variant/60 mb-4">
+        <p className="text-xs text-on-surface-subtle mb-4">
           Uses WardSeal's global section space token (`var(--space-section)` / 32px).
         </p>
         <Grid cols={3} gap="section">
@@ -145,7 +145,7 @@ export const BrandSpacingGaps: Story = {
         <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-2">
           Card Element Spacing (`gap="card"`)
         </h3>
-        <p className="text-xs text-on-surface-variant/60 mb-4">
+        <p className="text-xs text-on-surface-subtle mb-4">
           Uses WardSeal's inner card space token (`var(--space-card)` / 24px).
         </p>
         <Grid cols={3} gap="card">

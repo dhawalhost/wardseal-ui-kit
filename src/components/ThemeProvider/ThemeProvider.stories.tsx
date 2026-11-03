@@ -50,11 +50,11 @@ function FullThemeShowcase() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border bg-card">
         <div className="flex items-center justify-between px-6 py-3">
           <Logo variant="full" logoColor="brand" textColor={theme === "dark" ? "white" : "mono"} className="h-7 w-auto" />
           <div className="flex items-center gap-3">
-            <Badge variant="success" className="text-[10px]">Live Preview</Badge>
+            <Badge variant="success" className="text-xs">Live Preview</Badge>
             <ThemeToggle />
           </div>
         </div>
@@ -72,7 +72,7 @@ function FullThemeShowcase() {
               {theme === "dark" ? "Dark Mode" : "Light Mode"} Active
             </p>
             <p className="text-xs text-muted-foreground mt-0.5">
-              All components adapt to the current theme via CSS variable overrides on the <code className="text-primary bg-primary/10 px-1 py-0.5 rounded text-[10px]">.{theme}</code> document class.
+              All components adapt to the current theme via CSS variable overrides on the <code className="text-primary bg-primary/10 px-1 py-0.5 rounded text-xs">.{theme}</code> document class.
             </p>
           </div>
         </div>
@@ -147,7 +147,7 @@ function FullThemeShowcase() {
                 </p>
               </CardContent>
               <CardFooter>
-                <Badge variant="primary" className="text-[10px]">Glass Morphism</Badge>
+                <Badge variant="primary" className="text-xs">Glass Morphism</Badge>
               </CardFooter>
             </Card>
 
@@ -188,14 +188,14 @@ function FullThemeShowcase() {
                   <p className="text-sm font-semibold text-on-surface">MFA Enforcement</p>
                   <p className="text-xs text-muted-foreground mt-0.5">Require 2FA for all admin users</p>
                 </div>
-                <Switch defaultChecked />
+                <Switch defaultChecked aria-label="MFA enforcement" />
               </div>
               <div className="flex items-center justify-between p-3 rounded-lg border border-border bg-card">
                 <div>
                   <p className="text-sm font-semibold text-on-surface">Audit Logging</p>
                   <p className="text-xs text-muted-foreground mt-0.5">Record all access events</p>
                 </div>
-                <Switch />
+                <Switch aria-label="Audit logging" />
               </div>
             </div>
           </div>
@@ -224,22 +224,22 @@ function FullThemeShowcase() {
             <div className="flex items-center gap-3 p-3 rounded-lg border border-success/30 bg-success-subtle">
               <CheckCircle className="w-4 h-4 text-success flex-shrink-0" />
               <div>
-                <p className="text-xs font-bold text-success">Connection Active</p>
-                <p className="text-[10px] text-muted-foreground">All services operational</p>
+                <p className="text-xs font-bold text-success-subtle-foreground">Connection Active</p>
+                <p className="text-xs text-muted-foreground">All services operational</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 rounded-lg border border-warning/30 bg-warning-subtle">
               <AlertTriangle className="w-4 h-4 text-warning flex-shrink-0" />
               <div>
-                <p className="text-xs font-bold text-warning">Certificate Expiring</p>
-                <p className="text-[10px] text-muted-foreground">Renew within 14 days</p>
+                <p className="text-xs font-bold text-warning-subtle-foreground">Certificate Expiring</p>
+                <p className="text-xs text-muted-foreground">Renew within 14 days</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 rounded-lg border border-error/30 bg-error-subtle">
               <XCircle className="w-4 h-4 text-error flex-shrink-0" />
               <div>
-                <p className="text-xs font-bold text-error">Policy Violation</p>
-                <p className="text-[10px] text-muted-foreground">3 critical alerts</p>
+                <p className="text-xs font-bold text-error-subtle-foreground">Policy Violation</p>
+                <p className="text-xs text-muted-foreground">3 critical alerts</p>
               </div>
             </div>
           </div>
@@ -286,7 +286,7 @@ function FullThemeShowcase() {
                   <CardContent className="p-4 flex flex-col gap-2">
                     {icon}
                     <p className="text-xl font-bold text-on-surface">{value}</p>
-                    <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wide">{label}</p>
+                    <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wide">{label}</p>
                   </CardContent>
                 </Card>
               ))}

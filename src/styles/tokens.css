@@ -219,8 +219,8 @@
   --warning-foreground: 222 47% 6%;
   --warning-subtle: 48 40% 12%;
   --warning-subtle-foreground: 45 90% 65%;
-  --error: 0 72% 51%;
-  --error-foreground: 0 0% 100%;
+  --error: 0 84% 60%;
+  --error-foreground: 222 47% 6%;
   --error-subtle: 0 50% 14%;
   --error-subtle-foreground: 0 85% 75%;
   --destructive: var(--error);

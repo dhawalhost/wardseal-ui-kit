@@ -35,6 +35,8 @@ Apps never redefine brand colors ad hoc. Override by swapping `tokens.css` or se
 
 `--destructive` is an alias of `--error` (shadcn compat). In dark mode the bright
 status fills take dark ink foregrounds because white fails on them.
+Status colours are also safe as plain text (`text-error`, `text-success`…) on
+cards and the page background in both themes.
 
 All channel values are HSL **without** `hsl()`, so opacity works: `hsl(var(--secondary) / 0.1)`.
 

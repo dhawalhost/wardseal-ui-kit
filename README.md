@@ -114,8 +114,8 @@ npm run sync:web-ui   # rsync src/ → ../wardseal/web/ui/src/ (stories excluded
 
 ```bash
 npm run check:tokens   # also runs on prepublishOnly
-git tag ui/v0.3.0
-git push origin ui/v0.3.0
+git tag ui/v0.3.1
+git push origin ui/v0.3.1
 ```
 
 ## Rules

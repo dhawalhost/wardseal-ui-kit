@@ -17,7 +17,7 @@ export const Default: Story = {
       <div className="text-xs font-bold uppercase tracking-wider text-primary mb-4">
         Live Security Stream logs
       </div>
-      <div className="space-y-3 font-mono text-[10px] text-on-surface-variant/70">
+      <div className="space-y-3 font-mono text-xs text-on-surface-variant">
         {Array.from({ length: 20 }).map((_, i) => (
           <div key={i} className="border-b border-border pb-2">
             [10:45:{(i + 12).toString().padStart(2, "0")}] {"node-01 -> challenge: "}

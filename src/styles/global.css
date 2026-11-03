@@ -61,9 +61,9 @@
     @apply relative overflow-hidden rounded-lg border bg-card shadow-sm border-border;
   }
 
+  /* Solid header surface — name kept for backwards compat (no blur since 0.3.0) */
   .glass-header {
-    @apply backdrop-blur-md border-b border-border;
-    background: hsl(var(--background) / 0.9);
+    @apply border-b border-border bg-background;
   }
 
   .theme-transition {

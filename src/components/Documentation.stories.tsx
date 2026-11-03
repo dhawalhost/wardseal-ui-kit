@@ -178,7 +178,7 @@ function HandbookRenderer() {
       <div className="flex-1 flex max-w-7xl w-full mx-auto p-6 md:p-8 gap-8 overflow-hidden">
         {/* ── NAVIGATION SIDEBAR ── */}
         <aside className="w-64 bg-surface-container-low border border-border rounded-xl p-4 shrink-0 flex flex-col space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar">
-          <div className="flex items-center gap-2 px-2 text-xs font-bold uppercase tracking-wider text-on-surface-variant/40">
+          <div className="flex items-center gap-2 px-2 text-xs font-bold uppercase tracking-wider text-on-surface-subtle">
             <BookOpen className="w-3.5 h-3.5" />
             <span>Components list</span>
           </div>
@@ -188,9 +188,9 @@ function HandbookRenderer() {
                 key={c.name}
                 onClick={() => setActiveComponent(c.name)}
                 className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold tracking-tight transition-all duration-200 ${
-                  activeComponent === c.name
+         activeComponent === c.name
                     ? "bg-primary/5 text-primary font-bold border-l-2 border-primary pl-2.5"
-                    : "text-on-surface-variant/60 hover:text-on-surface hover:bg-surface-container/50"
+                    : "text-on-surface-subtle hover:text-on-surface hover:bg-surface-container"
                 }`}
               >
                 <span>{c.name}</span>
@@ -211,7 +211,7 @@ function HandbookRenderer() {
             <CardContent className="space-y-6">
               {/* Illustration Block */}
               <div className="rounded-xl border border-border bg-surface-container p-6 flex flex-col space-y-3">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/30 flex items-center gap-1.5">
+                <div className="text-xs font-bold uppercase tracking-widest text-on-surface-subtle flex items-center gap-1.5">
                   <Terminal className="w-3.5 h-3.5 text-primary" />
                   <span>Interactive illustration preview</span>
                 </div>
@@ -222,7 +222,7 @@ function HandbookRenderer() {
 
               {/* Props Specification Table */}
               <div className="space-y-3">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/30 flex items-center gap-1.5">
+                <div className="text-xs font-bold uppercase tracking-widest text-on-surface-subtle flex items-center gap-1.5">
                   <Layout className="w-3.5 h-3.5 text-primary" />
                   <span>Props specifications handbook</span>
                 </div>
@@ -231,11 +231,11 @@ function HandbookRenderer() {
                   <table className="w-full text-xs text-left border-collapse">
                     <thead>
                       <tr className="bg-surface-container border-b border-border">
-                        <th className="p-3 font-bold text-on-surface-variant/50 uppercase text-[10px] tracking-wider">Prop Name</th>
-                        <th className="p-3 font-bold text-on-surface-variant/50 uppercase text-[10px] tracking-wider">Type</th>
-                        <th className="p-3 font-bold text-on-surface-variant/50 uppercase text-[10px] tracking-wider text-center">Required</th>
-                        <th className="p-3 font-bold text-on-surface-variant/50 uppercase text-[10px] tracking-wider">Default</th>
-                        <th className="p-3 font-bold text-on-surface-variant/50 uppercase text-[10px] tracking-wider">Usage & Details</th>
+                        <th className="p-3 font-bold text-on-surface-subtle uppercase text-xs tracking-wider">Prop Name</th>
+                        <th className="p-3 font-bold text-on-surface-subtle uppercase text-xs tracking-wider">Type</th>
+                        <th className="p-3 font-bold text-on-surface-subtle uppercase text-xs tracking-wider text-center">Required</th>
+                        <th className="p-3 font-bold text-on-surface-subtle uppercase text-xs tracking-wider">Default</th>
+                        <th className="p-3 font-bold text-on-surface-subtle uppercase text-xs tracking-wider">Usage & Details</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -243,7 +243,7 @@ function HandbookRenderer() {
                         selectedDoc.props.map((p) => (
                           <tr key={p.name} className="border-b border-border/50 hover:bg-surface-container transition-colors">
                             <td className="p-3 font-mono font-bold text-primary">{p.name}</td>
-                            <td className="p-3 font-mono text-on-surface-variant/80 text-[11px]">{p.type}</td>
+                            <td className="p-3 font-mono text-on-surface-variant text-xs">{p.type}</td>
                             <td className="p-3 text-center">
                               {p.required ? (
                                 <Badge variant="destructive">Yes</Badge>
@@ -251,13 +251,13 @@ function HandbookRenderer() {
                                 <Badge variant="neutral">No</Badge>
                               )}
                             </td>
-                            <td className="p-3 font-mono text-on-surface-variant/60">{p.defaultValue || "-"}</td>
-                            <td className="p-3 text-on-surface-variant/80 font-medium leading-relaxed">{p.description}</td>
+                            <td className="p-3 font-mono text-on-surface-subtle">{p.defaultValue || "-"}</td>
+                            <td className="p-3 text-on-surface-variant font-medium leading-relaxed">{p.description}</td>
                           </tr>
                         ))
                       ) : (
                         <tr>
-                          <td colSpan={5} className="p-4 text-center font-semibold text-on-surface-variant/40 uppercase tracking-widest italic">
+                          <td colSpan={5} className="p-4 text-center font-semibold text-on-surface-subtle uppercase tracking-widest italic">
                             Inherits standard HTML element attributes.
                           </td>
                         </tr>

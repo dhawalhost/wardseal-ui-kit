@@ -77,12 +77,18 @@ const contract = [
     textSurfaces.map((bg) => [fg, bg, 4.5])),
   ...["outline", "input"].flatMap((fg) => ["card", "background"].map((bg) => [fg, bg, 3])),
   ["ring", "card", 3], ["ring", "background", 3],
+  // status colours are also used as plain text on cards (`text-destructive` etc.)
+  ...["success", "warning", "error", "info"].flatMap((s) => ["card", "background"].map((bg) => [s, bg, 4.5])),
   // inline field errors sit on card/background, invalid borders need 3:1
   ...["card", "background"].flatMap((bg) => [
     ["error-subtle-foreground", bg, 4.5],
     ["error", bg, 3],
   ]),
   ["on-primary", "primary", 4.5], ["on-secondary", "secondary", 4.5],
+  ["on-primary-container", "primary-container", 4.5],
+  ["on-secondary-container", "secondary-container", 4.5],
+  ["accent-foreground", "accent", 4.5],
+  ["on-surface-inverse", "surface-inverse", 4.5],
   ...["success", "warning", "error", "info"].flatMap((s) => [
     [`${s}-foreground`, s, 4.5],
     [`${s}-subtle-foreground`, `${s}-subtle`, 4.5],

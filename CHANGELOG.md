@@ -2,6 +2,43 @@
 
 All notable changes to `@dhawalhost/wardseal-ui-kit`.
 
+## 0.3.1 — 2026-11-03
+
+Completes the 0.3 accessibility pass for data, status and shell components, and
+adds the shell extension points product apps need to adopt the kit shells.
+
+### Tokens
+- **Changed** dark `--error` → `0 84% 60%` with a dark-ink foreground, so `text-error` / `text-destructive` reads on dark cards (was 3.7:1). Light is unchanged.
+- **Added** contrast-check pairs: status colours as text on card/background, container pairs (`on-primary-container`, `on-secondary-container`, `accent-foreground`) and inverse surface. 96 pairs now verified.
+
+### Components
+- **Table** — readable headers (`text-label text-on-surface-subtle`) and caption; `TableHead` defaults to `scope="col"`; `GlassTable*` keep their names but render solid.
+- **Badge** — now a `<span>` with no focus/hover styling (non-interactive); status variants use the subtle pairs; new `info` variant.
+- **Checkbox** — `--input` border, `focus-visible` ring, indeterminate state, joins `FormField` wiring.
+- **Switch** — 44×24 (24px target minimum), `--input` border when off, `focus-visible` ring, joins `FormField` wiring.
+- **Tabs** — 14px triggers; active state is fill + weight + shadow, not colour alone; `focus-visible` ring on triggers and panels.
+- **StatCard** — label/value/subtext use contrast-checked tones per variant; loading state announces “Loading” and sets `aria-busy`.
+- **PageHeader** — breadcrumb is an ordered list with `aria-current="page"`; long titles wrap instead of truncating.
+- **Card** — `isGlass` renders solid with `shadow-card` (no blur). `.glass-header` utility is solid.
+- **Accordion / Progress** — body copy 14px; progress glow removed.
+- **Logo** — `textColor` now defaults to `"mono"` (currentColor). The old `"white"` default was invisible on light surfaces; pass `textColor="white"` explicitly on dark backgrounds.
+
+### Shells
+- **AdminShell** — new `renderLink` (router integration), `brandHref`, `brandSubtitle`, `sidebarHeader`, `headerStart`, `footer`, `navFilter` (labelled “jump to page” filter), `collapsibleGroups` (`aria-expanded`; the current page’s group never hides), `mainClassName`, `sidebarClassName`; `user.email` optional, new `user.subtitle`.
+- **PortalLayout** — new `renderLink`, `brandHref`, `brandSubtitle`, `headerActions`, `userMenuItems`, `userMenuLabel`, `profileLabel`, `footerLinks` (external links announced), `footerNote`, `mainClassName`; `user.email` optional, new `user.avatarSeed`. Primary nav is omitted when `links` is empty.
+- New exported types: `ShellLinkProps`, `RenderShellLink`, `AdminShellUser`, `PortalFooterLink`.
+
+### Docs & stories
+- Stories pass the same audit as components (76 stories, light + dark): no text below 12px or 4.5:1, every control named. Neon demo colours replaced with brand tokens.
+
+### Migration from 0.3.0
+- `Badge` renders a `<span>`; `BadgeProps` extends `HTMLAttributes<HTMLSpanElement>`.
+- Dark-mode destructive buttons now use dark text on a brighter red.
+- `Switch` is slightly larger (44×24).
+- `Logo variant="full"` on a dark surface: add `textColor="white"`.
+
+No exports were removed.
+
 ## 0.3.0 — 2026-11-03
 
 Accessibility and token release. Every text, control-border and status pair now
