@@ -75,6 +75,8 @@ Checklist before merging:
 - [ ] Uses tokens only (no `border-white/5`, neon hex)
 - [ ] Works in Storybook **Light** and **Dark**
 - [ ] Exported from `src/index.ts` if public
+- [ ] `npm run check:tokens` passes (contrast contract + tokens.ts sync)
+- [ ] Entry added to `CHANGELOG.md`
 - [ ] Sync to `web/ui`
 
 ---
@@ -143,7 +145,7 @@ npm run build
 
 ```bash
 cd ~/go/src/wardseal-ui-kit
-rsync -a --delete --exclude '.DS_Store' src/ ../wardseal/web/ui/src/
+npm run sync:web-ui
 ```
 
 Bump version in **both** `package.json` files to the same value (e.g. `0.3.0` → `0.3.1`).

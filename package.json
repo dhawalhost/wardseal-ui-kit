@@ -1,6 +1,6 @@
 {
   "name": "@dhawalhost/wardseal-ui-kit",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "WardSeal Brand UI Component Library — React + Tailwind. Source of truth for the WardSeal design system across all apps.",
   "keywords": [
     "wardseal",
@@ -50,12 +50,14 @@
     "README.md",
     "LAYOUT.md",
     "THEMES.md",
+    "CHANGELOG.md",
     "MAINTENANCE.md"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc -p tsconfig.build.json && cp src/styles/tokens.css dist/tokens.css && cp src/styles/global.css dist/global.css",
-    "prepublishOnly": "npm run build",
+    "check:tokens": "node scripts/check-tokens.mjs",
+    "prepublishOnly": "npm run check:tokens && npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "sync:web-ui": "rsync -a --delete --exclude '*.stories.tsx' --exclude '.DS_Store' src/ ../wardseal/web/ui/src/ && cp src/styles/tokens.css ../wardseal/web/ui/src/styles/ && cp src/styles/global.css ../wardseal/web/ui/src/styles/ && cp src/tailwind-preset.ts ../wardseal/web/ui/src/"

@@ -53,6 +53,7 @@ const mockNavigation = [
         href: "#",
         icon: <Users className="w-4 h-4" />,
         badge: 4,
+        badgeLabel: "4 pending",
       },
       {
         label: "Access Policies",
@@ -135,6 +136,7 @@ export const FullDashboard: Story = {
     onLogout: () => console.log("Logout triggered"),
     onSearchClick: () => console.log("Search triggered"),
     onNotificationClick: () => console.log("Notifications opened"),
+    unreadNotifications: 3,
     topHeaderActions: (
       <Button variant="outline" size="sm" className="flex items-center gap-1">
         <span>Upgrade Node</span>

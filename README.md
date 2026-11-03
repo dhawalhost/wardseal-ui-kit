@@ -106,15 +106,16 @@ npm run build
 See **[MAINTENANCE.md](./MAINTENANCE.md)** for the full matrix. Short form:
 
 ```bash
-rsync -a --delete --exclude '.DS_Store' src/ ../wardseal/web/ui/src/
+npm run sync:web-ui   # rsync src/ → ../wardseal/web/ui/src/ (stories excluded)
 # bump package.json version in BOTH repos to the same value
 ```
 
 ## Publish
 
 ```bash
-git tag ui/v0.2.0
-git push origin ui/v0.2.0
+npm run check:tokens   # also runs on prepublishOnly
+git tag ui/v0.3.0
+git push origin ui/v0.3.0
 ```
 
 ## Rules
